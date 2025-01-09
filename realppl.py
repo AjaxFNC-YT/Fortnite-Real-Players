@@ -116,7 +116,7 @@ class fortniteAuth():
             
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get('https://api.ajaxfnc.com/deviceAuth') as response:
+                async with session.get('https://fnbl.xyz/api/device-auth') as response:
                     if response.status == 200:
                         data = await response.json()
                         self.openSite(data.get('url'))
